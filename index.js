@@ -48,6 +48,34 @@ var questionSix = {
 }
 var questions = [questionOne,questionTwo, questionThree,questionFour,questionFive,questionSix];
 
+var scoreBoard= [
+{
+  name:"Priyanshu",
+  score: 8,
+},
+{
+  name:"Supriy",
+  score: 6,
+},
+{
+  name:"Shreya",
+  score: 12,
+},
+{
+  name:"Sam",
+  score: 10,
+},
+];
+function compare_score(a, b){
+        if(a.score < b.score){
+                return -1;
+        }else if(a.score > b.score){
+                return 1;
+        
+        }else{
+                return 0;
+        }
+}
 //loop
 
 for (var i=0 ; i<questions.length ; i++)
@@ -59,5 +87,11 @@ for (var i=0 ; i<questions.length ; i++)
 }
 if(score> 8){
   console.log("Wow! You know him well");
+scoreBoard.push({name: userName, score: score});
+}
+scoreBoard.sort(compare_score);
+console.log("Did you make it to the LeaderBoard?")
+for(var i = 0;i < scoreBoard.length;i++){
+  console.log(scoreBoard[i].name + ": " + scoreBoard[i].score);
 }
 console.log("------THANKS FOR PLAYING!!!!!!!!----");
