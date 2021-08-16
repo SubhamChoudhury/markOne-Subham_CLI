@@ -1,20 +1,21 @@
 var readLineSync = require("readline-sync");
+var chalk = require('chalk');
 
 var userName = readLineSync.question("May I know your name? ");
-console.log("Hey there!! Welcome", userName , "to 'DO U KNOW' Subham");
+console.log(chalk.underline.yellow("Hey there!! Welcome", userName , "to 'DO U KNOW' Subham"));
 console.log("---------------");
 console.log("Lets begin! "); 
 
 var score = 0 ;
 //main function where processing takes place 
 function game(question,answer){
-  var userAnswer = readLineSync.question(question);
+  var userAnswer = readLineSync.question(chalk.blueBright(question));
 
   if (userAnswer === answer || userAnswer===answer.toLowerCase()){
-    console.log("You are right ! ");
+    console.log(chalk.green("You are right ! "));
     score+=2;
   } else {
-    console.log("Oops!!You are wrong.");
+    console.log(chalk.red("Oops!!You are wrong."));
     console.log("The correct ans is : " , answer);
   }
   console.log("Your current score is : " ,score);
@@ -86,12 +87,12 @@ for (var i=0 ; i<questions.length ; i++)
     console.log("----------------------");
 }
 if(score> 8){
-  console.log("Wow! You know him well");
+  console.log(chalk.bold.yellowBright.bgMagenta("Wow! You know him well"));
 scoreBoard.push({name: userName, score: score});
 }
 scoreBoard.sort(compare_score);
-console.log("Did you make it to the LeaderBoard?")
+console.log(chalk.italic.bold.cyan("Did you make it to the LeaderBoard?"))
 for(var i = 0;i < scoreBoard.length;i++){
   console.log(scoreBoard[i].name + ": " + scoreBoard[i].score);
 }
-console.log("------THANKS FOR PLAYING!!!!!!!!----");
+console.log(chalk.bold.underline.yellow("------THANKS FOR PLAYING!!!!!!!!----"));
